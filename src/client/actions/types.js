@@ -1,1 +1,2 @@
 export const FETCH_JOBS = "FETCH_JOBS";
+export const STORE_SEARCH_VALUES = "STORE_SEARCH_VALUES";

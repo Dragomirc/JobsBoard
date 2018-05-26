@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connet } from "react-redux";
+import { storeSearchValue } from "./actions/index.js";
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   state = {
     searchTerm: "",
     searchLocation: ""
@@ -10,17 +12,30 @@ export default class SearchBar extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onFormSubmit = (searchTerm, searchLocation) => {};
+  onFormSubmit = event => {
+    event.preventDefault();
+    this.props.storeSearchValues(
+      (this.state.searchTerm, this.state.searchLocation),
+      () => {
+        this.props.history.push("/jobs");
+      }
+    );
+    this.setState({ searchTerm: "", searchLocation: "" });
+  };
   render() {
     return (
-      <form>
+      <form onSubmit={this.onFormSubmit}>
         <label htmlFor="search-term">What</label>
         <input
           onChange={this.onInputChange}
           type="text"
           id="search-term"
           name="searchTerm"
-          placeholder="e.g marketing manager"
+          placeholder={
+            this.props.searchValues.searchTerm
+              ? this.props.searchValues.searchTerm
+              : "e.g marketing manager"
+          }
         />
 
         <label htmlFor="location">Where</label>
@@ -29,10 +44,18 @@ export default class SearchBar extends Component {
           type="text"
           id="location"
           name="searchLocation"
-          placeholder="town or city"
+          placeholder={
+            this.props.searchValues.searchLocation
+              ? this.props.searchValues.searchLocation
+              : "town or city"
+          }
         />
         <button>Search Jobs</button>
       </form>
     );
   }
 }
+
+const mapStateToProps = ({ searchValues }) => ({ searchValues });
+
+export default connect(mapStateToProps, { storeSearchValues })(SearchBar);
