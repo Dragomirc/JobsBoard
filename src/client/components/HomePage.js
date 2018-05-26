@@ -1,7 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
-export default class HomePage extends Component {
+import { fetchJobs } from "../actions/index";
+
+class HomePage extends Component {
+  componentDidMount() {
+    this.props.fetchJobs();
+  }
   render() {
     return (
       <div>
@@ -11,3 +17,5 @@ export default class HomePage extends Component {
     );
   }
 }
+
+export default connect(null, { fetchJobs })(HomePage);

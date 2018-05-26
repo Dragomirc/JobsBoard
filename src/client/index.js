@@ -16,5 +16,5 @@ ReactDOM.render(
       <Route exact path="/" component={HomePage} />
     </BrowserRouter>
   </Provider>,
-  document.queryElementById("root")
+  document.getElementById("root")
 );
