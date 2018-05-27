@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { connet } from "react-redux";
-import { storeSearchValue } from "./actions/index.js";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { storeSearchValues } from "../actions/index";
 
 class SearchBar extends Component {
   state = {
@@ -15,7 +16,8 @@ class SearchBar extends Component {
   onFormSubmit = event => {
     event.preventDefault();
     this.props.storeSearchValues(
-      (this.state.searchTerm, this.state.searchLocation),
+      this.state.searchTerm,
+      this.state.searchLocation,
       () => {
         this.props.history.push("/jobs");
       }
@@ -58,4 +60,6 @@ class SearchBar extends Component {
 
 const mapStateToProps = ({ searchValues }) => ({ searchValues });
 
-export default connect(mapStateToProps, { storeSearchValues })(SearchBar);
+export default withRouter(
+  connect(mapStateToProps, { storeSearchValues })(SearchBar)
+);
