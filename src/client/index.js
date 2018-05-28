@@ -2,20 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import { BrowserRouter, Route } from "react-router-dom";
-import promise from "redux-promise";
-import reduxThunk from "redux-thunk";
+import thunk from "redux-thunk";
 
 import reducers from "./reducers";
-import HomePage from "./components/HomePage";
+import App from "./components/App";
 
-const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <BrowserRouter>
-      <Route exact path="/" component={HomePage} />
-    </BrowserRouter>
+    <App />
   </Provider>,
   document.getElementById("root")
 );

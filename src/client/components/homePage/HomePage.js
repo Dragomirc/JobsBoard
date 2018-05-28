@@ -5,16 +5,8 @@ import SearchBar from "../SearchBar";
 import { fetchJobs } from "../../actions/index";
 
 class HomePage extends Component {
-  componentDidMount() {
-    this.props.fetchJobs();
-  }
   render() {
-    return (
-      <div>
-        <Header />
-        <SearchBar />
-      </div>
-    );
+    return <SearchBar />;
   }
 }
 
