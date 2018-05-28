@@ -20,6 +20,7 @@ class JobsList extends Component {
         return (
           <JobItem
             key={id}
+            id={id}
             title={title}
             salary={salary}
             location={location}

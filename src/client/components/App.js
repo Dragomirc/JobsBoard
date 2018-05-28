@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";
 import HomePage from "./homePage/HomePage";
 import JobsPage from "./jobsPage/JobsPage";
+import JobDetailsPage from "./jobDetailsPage/JobDetailsPage";
 import { fetchJobs } from "../actions/index";
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/jobs" component={JobsPage} />
+          <Route exact path="/jobDetails/:id" component={JobDetailsPage} />
         </div>
       </BrowserRouter>
     );
