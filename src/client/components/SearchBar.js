@@ -27,7 +27,7 @@ class SearchBar extends Component {
   render() {
     return (
       <form
-        className="main-search-bar form-horizontal"
+        className="main-search-bar form-group row"
         onSubmit={this.onFormSubmit}
       >
         <div className="col-sm-5 col-md-5">
@@ -45,7 +45,7 @@ class SearchBar extends Component {
             }
           />
         </div>
-        <div className="col-sm-4 col-md-5">
+        <div className="col-sm-5 col-md-5">
           <label htmlFor="location">Where</label>
           <input
             className="form-control"
@@ -61,7 +61,7 @@ class SearchBar extends Component {
           />
         </div>
 
-        <div className="form-submit col-sm-3 col-md-2">
+        <div className="col-sm-5 col-md-2">
           <button className="btn btn-primary">Search Jobs</button>
         </div>
       </form>

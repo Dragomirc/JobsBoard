@@ -8,21 +8,25 @@ $font-stack: "Open Sans",Helvetica,Arial,sans-serif;
   box-sizing: border-box;
 }
 
+.main-nav__item-jobs,.main-nav__item-recruiting {
+  display: none;
+}
+
 .main-header {
   background: $primary-color;
   font-family: $font-stack;
 
-
-  nav {
-    display: flex;
-    justify-content: space-between;
+nav {
+  display: flex;
+  justify-content: space-between;
     
-    ul {
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      height: 60px;
-      
+  ul {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    height: 60px;
+
+
       li {    
         list-style: none;        
         
@@ -33,6 +37,7 @@ $font-stack: "Open Sans",Helvetica,Arial,sans-serif;
           padding: 0 15px;
           line-height: 60px;
         }
+        
         .main-nav__jobs_link {
           font-weight:bold;
         } 
@@ -51,12 +56,34 @@ $font-stack: "Open Sans",Helvetica,Arial,sans-serif;
         border-bottom: 3px solid #fff;
       }
     }
-  }
+  } 
+}
+
+.main-search-bar {
+  margin: 2rem auto;
+  padding: 0 30px;
+  align-items: flex-end;
   
-  .main-search-bar {
-    max-width: 1280px;
+  label {
+    margin-bottom: 3px;
+  }
+  div {
+    padding: 0 15px;
+    margin-bottom: 15px;
+  }
+  button {
     width: 100%;
+    background-color: #e84188;
+    font-weight: 600;
+    
   }
 
+}
 
+@media (min-width: 768px) { 
+
+  .main-header__mobile-menu-item{
+    display: none;
+  }
+       
 }
