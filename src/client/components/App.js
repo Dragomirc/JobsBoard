@@ -7,6 +7,8 @@ import JobsPage from "./jobsPage/JobsPage";
 import JobDetailsPage from "./jobDetailsPage/JobDetailsPage";
 import { fetchJobs } from "../actions/index";
 
+import "../../../public/appStyles.scss";
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchJobs();

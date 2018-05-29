@@ -26,33 +26,44 @@ class SearchBar extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
-        <label htmlFor="search-term">What</label>
-        <input
-          onChange={this.onInputChange}
-          type="text"
-          id="search-term"
-          name="searchTerm"
-          placeholder={
-            this.props.searchValues.searchTerm
-              ? this.props.searchValues.searchTerm
-              : "e.g marketing manager"
-          }
-        />
+      <form
+        className="main-search-bar form-horizontal"
+        onSubmit={this.onFormSubmit}
+      >
+        <div className="col-sm-5 col-md-5">
+          <label htmlFor="search-term">What</label>
+          <input
+            className="form-control"
+            onChange={this.onInputChange}
+            type="text"
+            id="search-term"
+            name="searchTerm"
+            placeholder={
+              this.props.searchValues.searchTerm
+                ? this.props.searchValues.searchTerm
+                : "e.g marketing manager"
+            }
+          />
+        </div>
+        <div className="col-sm-4 col-md-5">
+          <label htmlFor="location">Where</label>
+          <input
+            className="form-control"
+            onChange={this.onInputChange}
+            type="text"
+            id="location"
+            name="searchLocation"
+            placeholder={
+              this.props.searchValues.searchLocation
+                ? this.props.searchValues.searchLocation
+                : "town or city"
+            }
+          />
+        </div>
 
-        <label htmlFor="location">Where</label>
-        <input
-          onChange={this.onInputChange}
-          type="text"
-          id="location"
-          name="searchLocation"
-          placeholder={
-            this.props.searchValues.searchLocation
-              ? this.props.searchValues.searchLocation
-              : "town or city"
-          }
-        />
-        <button>Search Jobs</button>
+        <div className="form-submit col-sm-3 col-md-2">
+          <button className="btn btn-primary">Search Jobs</button>
+        </div>
       </form>
     );
   }
