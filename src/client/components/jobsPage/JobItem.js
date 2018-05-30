@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const JobItem = ({
   id,
   title,
-  date,
   employerName,
   salary,
   location,
@@ -13,15 +12,13 @@ const JobItem = ({
 }) => {
   return (
     <Link to={`/jobDetails/${id}`}>
-      <li>
+      <li className="list-group-item">
         <h2>{title}</h2>
-        <div>
-          Posted {date} by {employerName}
-        </div>
-        <div>{salary}</div>
-        <div>{location}</div>
-        <div>{type}</div>
-        <p>{description}</p>
+        <div>Posted by {employerName}</div>
+        <div>Salary: {salary}</div>
+        <div>Location: {location}</div>
+        <div>Job Type: {type}</div>
+        <p>Description: {description}</p>
       </li>
     </Link>
   );

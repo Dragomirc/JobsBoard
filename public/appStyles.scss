@@ -8,7 +8,8 @@ $font-stack: "Open Sans",Helvetica,Arial,sans-serif;
   box-sizing: border-box;
 }
 
-.main-nav__item-jobs,.main-nav__item-recruiting {
+.main-nav__item-jobs,.main-nav__item-recruiting,
+ {
   display: none;
 }
 
@@ -80,10 +81,26 @@ nav {
 
 }
 
-@media (min-width: 768px) { 
+.container {
+  margin-top: 30px;
+}
+@media (min-width: 576px) { 
 
-  .main-header__mobile-menu-item{
-    display: none;
-  }
+     .main-header__mobile-menu-item{
+        display: none;
+      }
+
+      .main-search-bar {
+        padding: 0;
+
+        div {
+          padding: 0 0 0 15px;
+          margin-bottom: 15px;
+        }
+        .main-search-bar__btn {
+          padding-right: 15px;
+        }
+
+      }
        
 }

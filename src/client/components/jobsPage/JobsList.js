@@ -22,6 +22,7 @@ class JobsList extends Component {
             key={id}
             id={id}
             title={title}
+            employerName={employerName}
             salary={salary}
             location={location}
             type={type}
@@ -34,7 +35,7 @@ class JobsList extends Component {
     if (!Object.keys(this.props.jobs).length) {
       return <div>Loading...</div>;
     }
-    return <ul>{this.renderJobs(this.props.jobs)}</ul>;
+    return <ul className="list-group">{this.renderJobs(this.props.jobs)}</ul>;
   }
 }
 

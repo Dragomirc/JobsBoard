@@ -45,7 +45,7 @@ class SearchBar extends Component {
             }
           />
         </div>
-        <div className="col-sm-5 col-md-5">
+        <div className="col-sm-5 col-md-4">
           <label htmlFor="location">Where</label>
           <input
             className="form-control"
@@ -61,7 +61,7 @@ class SearchBar extends Component {
           />
         </div>
 
-        <div className="col-sm-5 col-md-2">
+        <div className="col-sm-2 col-md-3 col-xs-12 main-search-bar__btn">
           <button className="btn btn-primary">Search Jobs</button>
         </div>
       </form>

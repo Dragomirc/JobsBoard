@@ -4,7 +4,6 @@ import JobItem from "../jobsPage/JobItem";
 
 class JobDetailsPage extends Component {
   render() {
-    console.log("Hello Draogmir", this.props.match.params.id);
     const { id } = this.props.match.params;
     const { jobs } = this.props;
     const job = jobs[id];
@@ -12,25 +11,15 @@ class JobDetailsPage extends Component {
     if (!job) {
       return <div>Loading...</div>;
     }
-    const {
-      title,
-      date,
-      employerName,
-      salary,
-      location,
-      type,
-      description
-    } = job;
+    const { title, employerName, salary, location, type, description } = job;
     return (
-      <div>
-        <h2>{title}</h2>
-        <div>
-          Posted {date} by {employerName}
-        </div>
-        <div>{salary}</div>
-        <div>{location}</div>
-        <div>{type}</div>
-        <p>{description}</p>
+      <div className="container">
+        <h2>Title: {title}</h2>
+        <div>Posted by {employerName}</div>
+        <div>Salary: {salary}</div>
+        <div>Location: {location}</div>
+        <div>Job type: {type}</div>
+        <p>Description: {description}</p>
       </div>
     );
   }
