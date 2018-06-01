@@ -6,7 +6,7 @@ export default (state = {}, action) => {
 
   switch (type) {
     case FETCH_JOBS:
-      return _.mapKeys(payload, "id");
+      return _.mapKeys(payload.data.results, "jobId");
   }
   return state;
 };

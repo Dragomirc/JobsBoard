@@ -11,15 +11,27 @@ class JobDetailsPage extends Component {
     if (!job) {
       return <div>Loading...</div>;
     }
-    const { title, employerName, salary, location, type, description } = job;
+    const {
+      jobId,
+      jobTitle,
+      employerName,
+      maximumSalary,
+      minimumSalary,
+      currency,
+      jobUrl,
+      locationName,
+      jobDescription
+    } = job;
     return (
       <div className="container">
-        <h2>Title: {title}</h2>
+        <h2>Title: {jobTitle}</h2>
         <div>Posted by {employerName}</div>
-        <div>Salary: {salary}</div>
-        <div>Location: {location}</div>
-        <div>Job type: {type}</div>
-        <p>Description: {description}</p>
+        <div>
+          Salary: {minimumSalary} - {maximumSalary} {currency}
+        </div>
+        <div>Location: {locationName}</div>
+
+        <p>Description: {jobDescription}</p>
       </div>
     );
   }

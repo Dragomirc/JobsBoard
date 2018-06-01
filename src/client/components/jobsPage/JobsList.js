@@ -4,38 +4,16 @@ import _ from "lodash";
 import JobItem from "./JobItem";
 
 class JobsList extends Component {
-  renderJobs = array =>
-    _.map(
-      array,
-      ({
-        id,
-        title,
-        date,
-        employerName,
-        salary,
-        location,
-        type,
-        description
-      }) => {
-        return (
-          <JobItem
-            key={id}
-            id={id}
-            title={title}
-            employerName={employerName}
-            salary={salary}
-            location={location}
-            type={type}
-            description={description}
-          />
-        );
-      }
-    );
+  renderJobs = () =>
+    _.map(this.props.jobs, job => {
+      return <JobItem key={job.jobId} jobDetails={job} />;
+    });
+
   render() {
     if (!Object.keys(this.props.jobs).length) {
       return <div>Loading...</div>;
     }
-    return <ul className="list-group">{this.renderJobs(this.props.jobs)}</ul>;
+    return <ul className="list-group">{this.renderJobs()}</ul>;
   }
 }
 

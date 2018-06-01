@@ -29,7 +29,8 @@ nav {
 
 
       li {    
-        list-style: none;        
+        list-style: none;  
+          
         
         a {
           color: #fff;
@@ -83,6 +84,16 @@ nav {
 
 .container {
   margin-top: 30px;
+
+}
+
+.list-group{
+  a:hover,
+  a:active{
+    text-decoration: none;
+    border: 1px solid #0056b3;
+    border-radius: 5px;
+  }
 }
 @media (min-width: 576px) { 
 

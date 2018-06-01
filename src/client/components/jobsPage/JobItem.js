@@ -2,23 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const JobItem = ({
-  id,
-  title,
-  employerName,
-  salary,
-  location,
-  type,
-  description
+  jobDetails: {
+    jobId,
+    jobTitle,
+    employerName,
+    maximumSalary,
+    minimumSalary,
+    currency,
+    jobUrl,
+    locationName,
+    jobDescription
+  }
 }) => {
   return (
-    <Link to={`/jobDetails/${id}`}>
+    <Link to={`/jobDetails/${jobId}`}>
       <li className="list-group-item">
-        <h2>{title}</h2>
+        <h2>{jobTitle}</h2>
         <div>Posted by {employerName}</div>
-        <div>Salary: {salary}</div>
-        <div>Location: {location}</div>
-        <div>Job Type: {type}</div>
-        <p>Description: {description}</p>
+        <div>
+          Salary: {minimumSalary} - {maximumSalary} {currency}
+        </div>
+        <div>Location: {locationName}</div>
+        <p>Description: {jobDescription}</p>
       </li>
     </Link>
   );
