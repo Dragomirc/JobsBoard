@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../Header";
 import SearchBar from "../SearchBar";
-import { fetchJobs } from "../../actions/index";
+import { updateNotLandedDirectly } from "../../actions/index";
 
 class HomePage extends Component {
+  componentDidMount() {
+    this.props.updateNotLandedDirectly(true);
+  }
   render() {
-    return <SearchBar />;
+    console.log("this.props", this.props.fetchJobs);
+    return <SearchBar redirect={true} />;
   }
 }
 
-export default connect(null, { fetchJobs })(HomePage);
+export default connect(null, { updateNotLandedDirectly })(HomePage);

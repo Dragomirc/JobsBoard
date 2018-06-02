@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { storeSearchValues } from "../actions/index";
+import { storeSearchValues, fetchJobs } from "../actions/index";
 
 class SearchBar extends Component {
   state = {
-    searchTerm: "",
-    searchLocation: ""
+    keywords: "",
+    locationName: ""
   };
 
   onInputChange = event => {
@@ -15,14 +15,12 @@ class SearchBar extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.storeSearchValues(
-      this.state.searchTerm,
-      this.state.searchLocation,
-      () => {
-        this.props.history.push("/jobs");
-      }
-    );
-    this.setState({ searchTerm: "", searchLocation: "" });
+    this.props.storeSearchValues(this.state.keywords, this.state.locationName);
+    this.props.redirect
+      ? this.props.fetchJobs(this.state, () => {
+          this.props.history.push("/jobs");
+        })
+      : this.props.fetchJobs(this.state);
   };
   render() {
     return (
@@ -37,10 +35,10 @@ class SearchBar extends Component {
             onChange={this.onInputChange}
             type="text"
             id="search-term"
-            name="searchTerm"
+            name="keywords"
             placeholder={
-              this.props.searchValues.searchTerm
-                ? this.props.searchValues.searchTerm
+              this.props.searchValues.keywords
+                ? this.props.searchValues.keywords
                 : "e.g marketing manager"
             }
           />
@@ -52,10 +50,10 @@ class SearchBar extends Component {
             onChange={this.onInputChange}
             type="text"
             id="location"
-            name="searchLocation"
+            name="locationName"
             placeholder={
-              this.props.searchValues.searchLocation
-                ? this.props.searchValues.searchLocation
+              this.props.searchValues.locationName
+                ? this.props.searchValues.locationName
                 : "town or city"
             }
           />
@@ -72,5 +70,8 @@ class SearchBar extends Component {
 const mapStateToProps = ({ searchValues }) => ({ searchValues });
 
 export default withRouter(
-  connect(mapStateToProps, { storeSearchValues })(SearchBar)
+  connect(mapStateToProps, {
+    storeSearchValues,
+    fetchJobs
+  })(SearchBar)
 );

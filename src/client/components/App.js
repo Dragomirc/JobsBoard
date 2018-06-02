@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";
 import HomePage from "./homePage/HomePage";
 import JobsPage from "./jobsPage/JobsPage";
 import JobDetailsPage from "./jobDetailsPage/JobDetailsPage";
-import { fetchJobs } from "../actions/index";
 
 import "../../../public/appStyles.scss";
 
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchJobs();
-  }
+export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
@@ -26,5 +21,3 @@ class App extends Component {
     );
   }
 }
-
-export default connect(null, { fetchJobs })(App);
