@@ -15,14 +15,17 @@ class SearchBar extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.storeSearchValues(this.state.keywords, this.state.locationName);
-    this.props.redirect
-      ? this.props.fetchJobs(this.state, () => {
+    const { keywords, locationName } = this.state;
+    const { redirect, storeSearchValues } = this.props;
+    redirect
+      ? storeSearchValues(keywords, locationName, () => {
           this.props.history.push("/jobs");
         })
-      : this.props.fetchJobs(this.state);
+      : storeSearchValues(keywords, locationName);
   };
+
   render() {
+    const { keywords, locationName } = this.props.searchValues;
     return (
       <form
         className="main-search-bar form-group row"
@@ -36,11 +39,7 @@ class SearchBar extends Component {
             type="text"
             id="search-term"
             name="keywords"
-            placeholder={
-              this.props.searchValues.keywords
-                ? this.props.searchValues.keywords
-                : "e.g marketing manager"
-            }
+            placeholder={keywords ? keywords : "e.g marketing manager"}
           />
         </div>
         <div className="col-sm-5 col-md-4">
@@ -51,11 +50,7 @@ class SearchBar extends Component {
             type="text"
             id="location"
             name="locationName"
-            placeholder={
-              this.props.searchValues.locationName
-                ? this.props.searchValues.locationName
-                : "town or city"
-            }
+            placeholder={locationName ? locationName : "town or city"}
           />
         </div>
 

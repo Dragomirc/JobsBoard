@@ -6,9 +6,8 @@ import { fetchJobs, updateNotLandedDirectly } from "../../actions/index";
 
 class JobsPage extends Component {
   componentDidMount() {
-    this.props.landedDirectly
-      ? this.props.updateNotLandedDirectly(false)
-      : this.props.fetchJobs({});
+    const { keywords, locationName } = this.props.searchValues;
+    this.props.fetchJobs(keywords, locationName);
   }
 
   render() {
@@ -21,9 +20,9 @@ class JobsPage extends Component {
   }
 }
 
-const mapStateToProps = ({ jobs, landedDirectly }) => ({
+const mapStateToProps = ({ jobs, searchValues }) => ({
   jobs,
-  landedDirectly
+  searchValues
 });
 export default connect(mapStateToProps, { fetchJobs, updateNotLandedDirectly })(
   JobsPage
