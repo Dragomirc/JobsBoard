@@ -32,10 +32,9 @@ export const fetchJobs = ({
 
 export const storeSearchValues = (
   keywords,
-  locationName,
-  callback = () => null
+  locationName
 ) => dispatch => {
-  callback();
+
   dispatch({
     type: STORE_SEARCH_VALUES,
     payload: { keywords, locationName }

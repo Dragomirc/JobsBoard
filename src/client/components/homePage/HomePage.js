@@ -4,7 +4,7 @@ import Header from "../Header";
 import SearchBar from "../SearchBar";
 
 const HomePage = props => {
-  return <SearchBar redirect={true} />;
+  return <SearchBar  />;
 };
 
 export default HomePage;

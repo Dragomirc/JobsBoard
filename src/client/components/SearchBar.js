@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { storeSearchValues, fetchJobs } from "../actions/index";
 
+
 class SearchBar extends Component {
   state = {
     keywords: "",
@@ -16,12 +17,11 @@ class SearchBar extends Component {
   onFormSubmit = event => {
     event.preventDefault();
     const { keywords, locationName } = this.state;
-    const { redirect, storeSearchValues } = this.props;
-    redirect
-      ? storeSearchValues(keywords, locationName, () => {
-          this.props.history.push("/jobs");
-        })
-      : storeSearchValues(keywords, locationName);
+    const { storeSearchValues } = this.props;
+    storeSearchValues(keywords, locationName);
+    this.props.history.push(`/jobs/${keywords}/${locationName}`);
+      
+    
   };
 
   render() {

@@ -5,15 +5,17 @@ import SearchBar from "../SearchBar";
 import { fetchJobs, updateNotLandedDirectly } from "../../actions/index";
 
 class JobsPage extends Component {
-  componentDidMount() {
-    const { keywords, locationName } = this.props.searchValues;
-    this.props.fetchJobs(keywords, locationName);
+  componentWillMount() {
+    const { keywords, locationName } = this.props.match.params;
+   
+    //this.props.fetchJobs(keywords, locationName);
   }
 
   render() {
+    console.log("keywords",this.props.match.params)
     return (
       <div>
-        <SearchBar redirect={false} />
+        <SearchBar  />
         <JobsList jobs={this.props.jobs} />
       </div>
     );
