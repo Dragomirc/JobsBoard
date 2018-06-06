@@ -17,9 +17,10 @@ class SearchBar extends Component {
   onFormSubmit = event => {
     event.preventDefault();
     const { keywords, locationName } = this.state;
-    const { storeSearchValues } = this.props;
+    const { storeSearchValues,fetchJobs, fromJobsPage } = this.props;
     storeSearchValues(keywords, locationName);
     this.props.history.push(`/jobs/${keywords}/${locationName}`);
+    fromJobsPage ? fetchJobs({keywords,locationName}) : null;
       
     
   };
