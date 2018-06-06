@@ -14,7 +14,7 @@ export default class App extends Component {
         <div>
           <Header />
           <Route exact path="/" component={HomePage} />
-          <Route  path="/jobs/:keywords?/:locationName?" component={JobsPage} />
+          <Route  path="/jobs/:keywords?/:locationName?/:distanceFromLocation?" component={JobsPage} />
           <Route exact path="/jobDetails/:id" component={JobDetailsPage} />
         </div>
       </BrowserRouter>

@@ -30,14 +30,10 @@ export const fetchJobs = ({
   }
 };
 
-export const storeSearchValues = (
-  keywords,
-  locationName
-) => dispatch => {
-
+export const storeSearchValues = (searchValues) => dispatch => {
   dispatch({
     type: STORE_SEARCH_VALUES,
-    payload: { keywords, locationName }
+    payload: searchValues
   });
 };
 

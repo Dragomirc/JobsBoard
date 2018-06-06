@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import JobsList from "./JobsList";
+import DistanceSelection from "./DistanceSelection"
 import SearchBar from "../SearchBar";
-import { fetchJobs, updateNotLandedDirectly } from "../../actions/index";
+import { fetchJobs, storeSearchValues } from "../../actions/index";
 
 class JobsPage extends Component {
   componentDidMount() {
-    const { keywords, locationName } = this.props.match.params;
-    this.props.fetchJobs({keywords, locationName});
+    const { params } = this.props.match;
+    this.props.storeSearchValues(params)
+    this.props.fetchJobs(params);
  
   }
 
@@ -17,6 +19,7 @@ class JobsPage extends Component {
     return (
       <div>
         <SearchBar fromJobsPage={true} />
+        <DistanceSelection />
         <JobsList jobs={this.props.jobs} />
       </div>
     );
@@ -27,6 +30,6 @@ const mapStateToProps = ({ jobs, searchValues }) => ({
   jobs,
   searchValues
 });
-export default connect(mapStateToProps, { fetchJobs, updateNotLandedDirectly })(
+export default connect(mapStateToProps, { fetchJobs, storeSearchValues })(
   JobsPage
 );

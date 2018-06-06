@@ -11,22 +11,23 @@ class SearchBar extends Component {
   };
 
   onInputChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value }, () => this.props.storeSearchValues(this.state));  
   };
 
   onFormSubmit = event => {
     event.preventDefault();
-    const { keywords, locationName } = this.state;
-    const { storeSearchValues,fetchJobs, fromJobsPage } = this.props;
-    storeSearchValues(keywords, locationName);
+    const {keywords, locationName} = this.state
+    const { fetchJobs, fromJobsPage } = this.props;   
     this.props.history.push(`/jobs/${keywords}/${locationName}`);
-    fromJobsPage ? fetchJobs({keywords,locationName}) : null;
+    fromJobsPage ? fetchJobs(this.state) : null;
       
     
   };
 
   render() {
-    const { keywords, locationName } = this.props.searchValues;
+    const { keywords, locationName } = this.state;
+    const { keywords : keywordsParams,locationName : locationNameParams } = this.props.match.params;
+   
     return (
       <form
         className="main-search-bar form-group row"
@@ -37,10 +38,11 @@ class SearchBar extends Component {
           <input
             className="form-control"
             onChange={this.onInputChange}
+            value = {keywords ? keywords : (keywordsParams ? keywordsParams : "") }
             type="text"
             id="search-term"
             name="keywords"
-            placeholder={keywords ? keywords : "e.g marketing manager"}
+            placeholder={ "e.g marketing manager"}
           />
         </div>
         <div className="col-sm-5 col-md-4">
@@ -48,10 +50,11 @@ class SearchBar extends Component {
           <input
             className="form-control"
             onChange={this.onInputChange}
+            value = {locationName ? locationName : (locationNameParams ? locationNameParams : "") }
             type="text"
             id="location"
             name="locationName"
-            placeholder={locationName ? locationName : "town or city"}
+            placeholder={ "town or city"}
           />
         </div>
 
